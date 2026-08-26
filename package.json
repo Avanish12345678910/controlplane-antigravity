@@ -1,0 +1,62 @@
+{
+  "name": "controlplane-vscode",
+  "displayName": "ControlPlane VSCode",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "controlplane.showDashboard",
+        "title": "ControlPlane: Show Dashboard"
+      },
+      {
+        "command": "controlplane.scanPrompt",
+        "title": "ControlPlane: Scan Prompt"
+      }
+    ],
+    "configuration": {
+      "title": "ControlPlane",
+      "properties": {
+        "controlplane.responsibility.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable responsibility checks"
+        },
+        "controlplane.cost.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable cost checks"
+        },
+        "controlplane.performance.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable performance checks"
+        },
+        "controlplane.latencyBudgetMs": {
+          "type": "number",
+          "default": 50,
+          "description": "Latency budget in ms"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "dependencies": {
+    "http-proxy-middleware": "^2.0.6",
+    "tiktoken": "^1.0.10"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.80.0",
+    "typescript": "^5.1.3"
+  }
+}
